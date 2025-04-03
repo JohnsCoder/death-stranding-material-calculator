@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 
 int* calcMaterials(const int* materialList, const int materialListLength, int needMaterialAmount);
@@ -18,7 +19,7 @@ int totalCeramicas;
 int ceramicasProgresso;
 
 
-printf("Insira progresso da autopavimentadora: ex. 1020/2050\n");
+printf("Insira progresso da auto pavimentadora: ex. 1020/2050\n");
 printf("Metais: \n");
 scanf("%d/%d", &metaisProgresso, &totalMetais);
 printf("Cerâmicas: \n");
@@ -52,7 +53,7 @@ return 0;
 
 int* calcMaterials(const int* materialList, const int materialListLength, int needMaterialAmount) {
 
-int needMaterialList[100] = {0};
+int *needMaterialList = (int *)malloc(100 * sizeof(int));
 int indexNeedMaterial = 0;
 
 int indexMaterial = 0;
@@ -63,9 +64,9 @@ int material = materialList[indexMaterial];
 int remaindMaterial = needMaterialAmount - material;
 //  printf("needMaterial: %d\n", needMaterialAmount);
 
- printf("Material: %d\n", material);
+//  printf("Material: %d\n", material);
 
- printf("remaindMaterial: %d\n", remaindMaterial);
+//  printf("remaindMaterial: %d\n", remaindMaterial);
 if (remaindMaterial > 0) {
 
 needMaterialList[indexNeedMaterial] = material;
